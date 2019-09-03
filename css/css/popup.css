@@ -1,0 +1,98 @@
+/*模态框样式*/
+button[disabled], html input[disabled] {
+    cursor: not-allowed;
+}
+.modal-content {
+    border-radius: 0px;
+}
+.modal-header {
+    cursor: move;
+}
+.layui-form-item {
+    margin-bottom: 0px;
+}
+.layui-input-block {
+    color: #463b3b;
+}
+.layui-form-label {
+    padding: 6px 0px;
+    width: 90px;
+    color: #515151;
+    font-size: 14px;
+}
+.no-edit {
+    background-color: #eee;
+}
+.layui-input {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 0px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+}
+.layui-textarea {
+    min-height: 60px;
+    font-size: 14px;
+    border-radius: 0;
+    background-color: #f0f0f0;
+}
+
+/*弹窗“确定”与“取消”样式*/
+.lay-submit {
+    padding: 0px 50px;
+    height: 34px;
+    line-height: 34px;
+    color: #fff;
+    border-radius: 0px;
+    background: -webkit-linear-gradient(to right, #00b3fe, #0082e3);
+    background: -o-linear-gradient(to right, #00b3fe, #0082e3);
+    background: -moz-linear-gradient(to right, #00b3fe, #0082e3);
+    background: linear-gradient(to right, #00b3fe, #0082e3);
+}
+.layui-btn-primary {
+    padding: 0px 50px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 0px;
+}
+.layui-btn+.layui-btn {
+    margin-left: 4px;
+}
+
+/*layui弹框样式覆盖*/
+.layui-layer {
+    border-radius: 0px!important;
+}
+.layui-layer-btn a {
+    font-size: 14px;
+    border-radius: 0px!important;
+}
+.layui-form-switch {
+    height: 24px;
+    line-height: 20px;
+    padding: 0 10px;
+    margin-top: 4px;
+}
+.specialInput {
+    float: left;
+    width: 90%;
+}
+.layui-rate {
+    padding: 3px 5px 0px 0;
+}
+.ip-port input{
+    float: left;
+    width: 44%;
+}
+
+/*文件上传样式*/
+.layui-upload-choose {
+    float: left;
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 0px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+}
+

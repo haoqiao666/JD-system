@@ -1,0 +1,401 @@
+/*监测总览*/
+/*layui中间距问题*/
+.layui-col-space15 {
+    margin-top: 0;
+}
+.layui-col-space15>* {
+    padding: 0;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+.specialLabel {
+    margin-bottom: 0px;
+    width: auto!important;
+    padding: 5px 0!important;
+}
+.specialInputTime,
+.specialInputTime:hover,
+.specialInputTime:focus{
+    cursor: pointer;
+    color:#00a7ff ;
+    background-color: transparent!important;
+    border-color: transparent!important;
+}
+.dataCon {
+    height: 80px;
+    padding: 5px 5px;
+}
+.dataNameCon {
+    float: left;
+    width:40%;
+    height: 100%;
+}
+.dataImage {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url("../../images/dataImage6.png");
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+    background-position-x:-12px;
+}
+.dataImage1 {
+    background-position-x:-62px;
+}
+.dataImage2 {
+    background-position-x:-112px;
+}
+.dataImage3 {
+    background-position-x:-162px;
+}
+.dataImage4 {
+    background-position-x:-212px;
+}
+.dataImage5 {
+    background-position-x:-262px;
+}
+.dataName {
+    padding-top: 15px;
+    padding-bottom: 6px;
+    font-size: 12px;
+    color: #5c5c5c;
+}
+.underline {
+    display: block;
+    height: 1px;
+    width: 100%;
+    border-bottom: 4px solid #f07355;
+    border-radius: 2px;
+}
+.underline1{
+    border-bottom: 4px solid #e89c3e;
+}
+.underline2{
+    border-bottom: 4px solid #b0e063;
+}
+.underline3{
+    border-bottom: 4px solid #37beb0;
+}
+.underline4{
+    border-bottom: 4px solid #16a8cd;
+}
+.underline5{
+    border-bottom: 4px solid #7577c4;
+}
+.dataNumberCon {
+    margin-right: 2%;
+    float: left;
+    width: 58%;
+    height: 100%;
+    border-right: 1px solid #e8ecf0;
+}
+.dataNumber {
+    margin: auto;
+    width: 90%;
+    padding-top: 20px;
+    padding-right: 10px;
+    font-size: 24px;
+    height: 100%;
+    text-align: right;
+    border-bottom: 2px solid #6d7483;
+    box-sizing: border-box;
+    color: #f07355;
+}
+.dataNumber1 {
+    color: #e89c3e;;
+}
+.dataNumber2 {
+    color: #b0e063;
+}
+.dataNumber3 {
+    color: #37beb0;
+}
+.dataNumber4 {
+    color: #16a8cd;
+}
+.dataNumber5 {
+    color: #7577c4;
+}
+.abstract {
+    padding: 8px 0;
+    width: 100%;
+   /* text-indent: 1em;*/
+    font-size: 12px;
+    color: #108cee;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.simulationTable {
+    min-width: 500px;
+    color:#444444;
+}
+.tbody-scroll {
+    height: 280px;
+    overflow: hidden;
+}
+.ul-thead li {
+    padding: 6px 0;
+    font-weight: 400;
+    background-color: #f6f7fb;
+    font-size: 14px;
+    overflow: hidden;
+}
+.ul-tbody li {
+    padding: 6px 0;
+    height: 28px;
+    font-size: 12px;
+    overflow: hidden;
+}
+.tr_hide {
+    display: none;
+}
+.tr_show {
+    display: block;
+}
+.loading {
+    padding: 10px 0;
+    text-align: center;
+}
+.ul-thead li span {
+    float: left;
+}
+.ul-thead li span,
+.ul-tbody li span {
+    display: inline-block;
+    text-align: left;
+    box-sizing: border-box;
+    text-indent: .2em;
+}
+.ul-tbody li:hover {
+    background-color: #f5fbff;
+}
+.wid_id {
+    width: 6%;
+}
+.wid_ip {
+    width: 22%;
+}
+.wid_num {
+    width: 15%;
+}
+.wid_place {
+    width: 22%;
+}
+.wid_pre {
+    width: 14%;
+}
+.wid_more {
+    height: 15px;
+    width: 20%;
+    color: #0092ff;
+}
+.wid_url ,
+.wid_browser ,
+.wid_area ,
+.wid_response_state {
+    width: 44%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wid_ip2 {
+    width: 18%;
+}
+.wid_place2 {
+    width: 15%;
+}
+.wid_consume_flow {
+    width: 12%;
+}
+.td_pre {
+    display: inline-block;
+    height: 100%;
+    margin-bottom: 0;
+    height: 12px;
+    background-color: #108cee;
+}
+.click-more {
+    cursor: pointer;
+    transition: transform .3s;
+    cursor: pointer;
+}
+.click-more-rotate {
+    transform: rotate(-90deg);
+}
+/*带有icon的数据*/
+.iconDataCon {
+    height: 62px;
+}
+.icon{
+    float: left;
+    width:62px;
+    height: 62px;
+    background-repeat: no-repeat;
+}
+.assectIcon{
+    background-image: url("../../images/assets-icon.png");
+    background-position-x: -34px;
+    background-position-y: -20px;
+}
+.assectIcon1 {
+    background-position-x: -256px;
+    background-position-y: -120px;
+}
+.assectIcon2 {
+    background-position-x: -256px;
+    background-position-y: -20px;
+}
+/****************资产透视/资产展示适配********************/
+@media screen and (max-width: 1360px) and (min-width: 990px) {
+    .assectIcon {
+        display: none;
+    }
+}
+
+
+
+.alarmIcon {
+    background-image: url("../../images/alarm-icon.png");
+    background-position-x: -34px;
+    background-position-y: -25px;
+}
+.alarmBusinessIcon {
+    background-image: url("../../images/alarm-icon.png");
+    background-position-x: -34px;
+    background-position-y: -120px;
+}
+.alarmIcon1 {
+    background-position-x: -460px;
+}
+.alarmIcon2 {
+    background-position-x: -886px;
+}
+.alarmIcon3 {
+    background-position-x: -1312px;
+}
+.iconData {
+    float: left;
+    height: 62px;
+    line-height: 62px;
+    font-size: 14px;
+    text-indent: 0.5em;
+    color: #444444;
+}
+.iconData span {
+    color: #0089f0;
+}
+/*告警管理/告警统计*/
+.alarmTop10 {
+    float: left;
+    width: 50%;
+    height: 280px;
+}
+.tableTop10 {
+    float: right;
+    width: 48%;
+    height: 300px;
+}
+.tableTop10 ul {
+    width: 100%;
+}
+.tab-head {
+    width: 100%;
+    color: #444444;
+    font-size: 14px;
+    background-color:#f6f7fb;
+    overflow: hidden;
+}
+.tab-body {
+    margin-top: 4px;
+    width: 100%;
+    color: #444444;
+    font-size: 12px;
+    overflow: hidden;
+}
+.tab-body:hover {
+    background-color:#f5fbff ;
+}
+.tab-head span:nth-child(1),
+.tab-body span:nth-child(1){
+    float: left;
+    padding: 5px 0;
+    display: inline-block;
+    width: 50%;
+    text-indent: 0.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tab-head span:nth-child(2),
+.tab-body span:nth-child(2){
+    float: left;
+    padding: 5px 0;
+    display: inline-block;
+    width: 30%;
+    text-indent: 0.5em;
+}
+.tab-body span:nth-child(2){
+    color: red;
+}
+.tab-head span:nth-child(3),
+.tab-body span:nth-child(3){
+    float: right;
+}
+.tab-body span:nth-child(3){
+    padding: 5px;
+    margin-right: 6px;
+    cursor: pointer;
+    color: #108cee;
+}
+.page-nav li {
+    position: relative;
+    float: left;
+    padding: 4px 10px 8px;
+    font-size: 14px;
+    color: #444444;
+    cursor: pointer;
+}
+.page-nav li:hover::before {
+    left: 0%;
+    right: 0%;
+}
+.page-nav li:hover {
+    color: #0089f0;
+}
+.page-nav li::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    bottom: -2px;
+    background-color: #0089f0;
+    height: 2px;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+/*策略提示语句*/
+.information-description {
+    margin-bottom: 10px;
+    font-size: 12px;
+    padding: 6px;
+    background-color: #f5fbff;
+    color: #515151;
+    border: 1px solid #97d1fe;
+}
+
+.information-description i {
+    font-size: 14px;
+    color: #FFB800;
+}
+/*账号违规列表*/
+.greatPowerListSing {
+    margin: 4px 4px 0 0;
+    display: inline-block;
+    padding: 2px 4px;
+    float: left;
+    border: 1px solid #e6e6e6;
+    border-radius: 6px;
+}

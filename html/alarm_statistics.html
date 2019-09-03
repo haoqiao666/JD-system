@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+    <link rel="stylesheet" href="../css/css/special.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">告警管理/告警统计（页面部分功能暂不清楚）</div>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon alarmIcon alarmIcon0"></div>
+                    <div class="iconData">模块告警:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon alarmIcon alarmIcon1"></div>
+                    <div class="iconData">账号告警:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon alarmIcon alarmIcon2"></div>
+                    <div class="iconData">告警类型:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class=" icon alarmIcon alarmIcon3"></div>
+                    <div class="iconData">告警IP:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <!--模块-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;模块告警(Top10)</div>
+                <div class="simulationTable">
+                     <div class="alarmTop10" id="module_top10" ></div>
+                     <div class="tableTop10 ">
+                          <ul>
+                              <li class='tab-head'>
+                                  <span>模块名称</span>
+                                  <span>告警数量</span>
+                                  <span style="border:1px solid red" title="用处？？？？"><button type="button" class='btn btn-default' style="margin-top: 0px"><i class='glyphicon glyphicon-arrow-down'></i></button></span>
+                              </li>
+                          </ul>
+                         <ul class="mkgj">
+                             <li class="loading">正在加载数据.....</li>
+                         </ul>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <!--账号-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;账号告警(Top10)</div>
+                <div class="simulationTable">
+                    <div class="alarmTop10" id=""></div>
+                    <div class="tableTop10 ">
+                        <ul>
+                            <li class='tab-head'>
+                                <span>模块名称</span>
+                                <span>告警数量</span>
+                                <span><button type="button" class='btn btn-default' style="margin-top: 0px"><i class='glyphicon glyphicon-arrow-down'></i></button></span>
+                            </li>
+                        </ul>
+                        <ul class="zhgj">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--类型-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;告警类型(Top10)</div>
+                <div class="simulationTable">
+                    <div class="alarmTop10" id="" ></div>
+                    <div class="tableTop10">
+                        <ul>
+                            <li class='tab-head'>
+                                <span>模块名称</span>
+                                <span>告警数量</span>
+                                <span><button type="button" class='btn btn-default' style="margin-top: 0px"><i class='glyphicon glyphicon-arrow-down'></i></button></span>
+                            </li>
+                        </ul>
+                        <ul class="gjlx">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--ip-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;告警IP(Top10)</div>
+                <div class="simulationTable">
+                    <div class="alarmTop10" id="" ></div>
+                    <div class="tableTop10 ">
+                        <ul>
+                            <li class='tab-head'>
+                                <span>模块名称</span>
+                                <span>告警数量</span>
+                                <span><button type="button" class='btn btn-default' style="margin-top: 0px"><i class='glyphicon glyphicon-arrow-down'></i></button></span>
+                            </li>
+                        </ul>
+                        <ul class="gjip">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/dark.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+        /*top10 echarts图*/
+        var ecColor = ['#38404d','#0092ff','#fff'];
+        var moduleTop = echarts.init(document.getElementById('module_top10'), 'dark');
+        /*window.onresize = myChartIp.resize;
+        window.onresize = myChartRecord.resize;*/
+        $(window).resize(function(){
+            moduleTop.resize();
+           /* myChartRecord.resize();*/
+        })
+        moduleChartsOption = {
+            backgroundColor:'rgba(0,0,0,0)',
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                top:'3%',
+                left: '0%',
+                right: '2%',
+                bottom: '2%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                position:'top',
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+            },
+            yAxis: {
+                type: 'category',
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                data: ['巴西','印尼','美国','印度','中国','泰国','白俄罗斯','巴基斯坦','英国','阿联酋']
+            },
+            color:['#108cee'],
+            series: [
+                {
+                    name: '2012年',
+                    type: 'bar',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            color:'#000'
+                        }
+                    },
+                    data: [193, 234, 310, 1215, 1341, 688,345,732,921,578]
+                }
+            ]
+        };
+        moduleTop.setOption(moduleChartsOption);
+
+        /*表格样式*/
+        var mkgj = $('.mkgj'),zhgj = $('.zhgj'),gjlx = $('.gjlx'),gjip = $('.gjip');
+        $.ajax({
+            type:'GET',
+            url:'../top10.json',
+            success:function(result){
+                 var moduleData = result.module,moduleDataLength = moduleData.length;
+                 var accountData = result.account,accountDataLength = accountData.length;
+                 var typeData = result.types,typeDataLength = typeData.length;
+                 var ipData = result.ip,ipDataLength = ipData.length;
+                 /*模块告警*/
+                 if(moduleDataLength < 0) {
+                     mkgj.html("<div class='loading'>暂无数据</div>")
+                 }else{
+                     mkgj.html("");
+                     for(var i=0;i < 9;i++) {
+                         tableModule(mkgj,moduleData[i].name,moduleData[i].num,moduleData[i].details)
+                     }
+                 };
+                /*账号告警*/
+                if(accountDataLength < 0) {
+                    zhgj.html("<div class='loading'>暂无数据</div>")
+                }else{
+                    zhgj.html("");
+                    for(var i=0;i < 9;i++) {
+                        tableModule(zhgj,accountData[i].name,accountData[i].num,accountData[i].details)
+                    }
+                };
+                /*告警类型*/
+                if(typeDataLength < 0) {
+                    gjlx.html("<div class='loading'>暂无数据</div>")
+                }else{
+                    gjlx.html("");
+                    for(var i=0;i < 9;i++) {
+                        tableModule(gjlx,typeData[i].name,typeData[i].num,typeData[i].details)
+                    }
+                };
+                /*告警IP*/
+                if(ipDataLength < 0) {
+                    gjip.html("<div class='loading'>暂无数据</div>")
+                }else{
+                    gjip.html("");
+                    for(var i=0;i < 9;i++) {
+                        tableModule(gjip,ipData[i].name,ipData[i].num,ipData[i].details)
+                    }
+                };
+
+
+
+            }
+        });
+
+        /*模拟表格结构*/
+        function tableModule(obj,name,num,details){
+            var element =  "<li class='tab-body'>" +
+                                "<span title='"+name+"'>"+name+"</span>" +
+                                "<span>"+num+"</span>" +
+                                "<span details='"+details+"' title='查看详情'><i class='glyphicon glyphicon-list-alt'></i></span>" +
+                            "</li>";
+            obj.append(element);
+        }
+    })
+</script>
+</body>
+</html>

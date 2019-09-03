@@ -1,0 +1,19 @@
+ {
+  "alarmData":[{
+    "id":0,
+    "alarmName":"告警name1",
+    "grade":"high",
+    "information":"这是一条告警信息所携带的信息"
+  },{
+    "id":1,
+    "alarmName":"111111",
+    "grade":"mid",
+    "information":"这是一条告警信息所携带的信息"
+  },{
+    "id":2,
+    "alarmName":"22222",
+    "grade":"low",
+    "information":"这是一条告警信息所携带的信息"
+  }
+  ]
+}

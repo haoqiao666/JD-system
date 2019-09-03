@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">系统管理/网络管理/路由配置</div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-sm12 block-style">
+            <div class="block-title"><span></span>&nbsp;&nbsp;路由配置</div>
+            <div style="margin-top: 10px;">
+                <div class="layui-btn-group toolbarAll">
+                    <button class="layui-btn layui-btn-sm" data-toggle="modal" data-target="#myModal">添加路由</button>
+                </div>
+            </div>
+            <table class="layui-table" id="table" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'id', fixed: 'left'}">ID</th>
+                    <th lay-data="{field:'name', edit: 'text'}">目的网段</th>
+                    <th lay-data="{field:'url', edit: 'text'}">子网掩码</th>
+                    <th lay-data="{field:'ip', edit: 'text'}">网关(吓一跳)</th>
+                    <th lay-data="{field:'state', edit: 'text'}">描述</th>
+                    <th lay-data="{fixed: 'right', width:178, align:'center',toolbar:'#operation'}">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-sm12 block-style">
+            <div class="block-title"><span></span>&nbsp;&nbsp;路由显示</div>
+            <table class="layui-table" id="table1" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'id', fixed: 'left'}">ID</th>
+                    <th lay-data="{field:'name'}">目的网段</th>
+                    <th lay-data="{field:'url'}">子网掩码</th>
+                    <th lay-data="{field:'ip'}">网关(吓一跳)</th>
+                    <th lay-data="{field:'state'}">路由状态</th>
+                    <th lay-data="{field:'state'}">出接口</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<!--添加路由模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">目的网段</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入目的网段">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">子网掩码</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入子网掩码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">网关(下一跳)</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入网关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">描&nbsp;&nbsp;述</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入描述内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+
+    })
+</script>
+</body>
+</html>

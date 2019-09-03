@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">系统管理/设备管理/硬盘资源</div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="block-title"><span></span>&nbsp;&nbsp;磁盘空间总览</div>
+        <div class="modal-body">
+            <div class="layui-form-item">
+                <label class="layui-form-label">总磁盘空间(GB)</label>
+                <div class="layui-input-block">
+                    <p class="layui-input">916.68</p>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">已用磁盘空间(GB)</label>
+                <div class="layui-input-block">
+                    <p class="layui-input"></p>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">可用磁盘空间(GB)</label>
+                <div class="layui-input-block">
+                    <p class="layui-input"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="block-title"><span></span>&nbsp;&nbsp;磁盘容量统计图</div>
+        <div class="layui-col-sm12 echart-height" id="memory_output">
+
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/dark.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+        var ecColor = ['#38404d','#0092ff','#fff'];
+        var memoryChart = echarts.init(document.getElementById('memory_output'), 'dark');
+        window.onresize = memoryChart.resize;
+        memoryOption = {
+            backgroundColor: 'rgba(0,0,0,0)',
+            grid: {
+                top: '14%',
+                left: '2%',
+                right: '3%',
+                bottom: '2%',
+                containLabel: true
+            },
+            tooltip: {
+                trigger: 'axis',
+                textStyle: {
+                    color:ecColor[2],
+                    fontSize:'14'
+                }
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                splitLine: {show: true, lineStyle: {type: 'dashed', color: ecColor[0]}},
+                axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                data: ['周一','周二','周三','周四','周五','周六','周日']
+            }],
+            yAxis: {
+                name : '空间（GB）',
+                nameTextStyle: {
+                    color:ecColor[0]
+                },
+                type: 'value',
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                splitLine: {show: true, lineStyle: {type: 'dashed', color: ecColor[0]}},
+                axisLabel: {show: true, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                minInterval: 1
+            },
+            series: [
+                {
+                    name:'搜索引擎',
+                    type:'line',
+                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+        memoryChart.setOption(memoryOption);
+    })
+</script>
+</body>
+</html>

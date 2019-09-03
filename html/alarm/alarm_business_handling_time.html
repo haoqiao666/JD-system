@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/css/common.css">
+    <link rel="stylesheet" href="../../css/css/popup.css">
+    <link rel="stylesheet" href="../../css/css/special.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">告警管理/告警处理/业务安全告警</div>
+    </div>
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-sm12">
+            <div class="block-style">
+                <ul class="page-nav">
+                    <li link="../alarm/alarm_business_account_excess.html" >账号越权</li>
+                    <li link="../alarm/alarm_business_process_violation.html">流程违规</li>
+                    <li link="../alarm/alarm_business_high_frequency.html">恶意高频</li>
+                    <li link="../alarm/alarm_business_sensitive_violation.html">涉敏违规</li>
+                    <li link="../alarm/alarm_business_handling_time.html" style="border-bottom: 2px solid #0089f0;color: #0089f0">办理时间</li>
+                    <li link="../alarm/alarm_business_account_violation.html">账号违规</li>
+                    <li link="../alarm/alarm_business_account_reuse.html">账号复用</li>
+                    <li link="../alarm/alarm_business_zombie_account.html">僵尸账号</li>
+                    <li link="../alarm/alarm_business_weak_password.html">弱口令</li>
+                    <li link="../alarm/alarm_business_custom.html">自定义</li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon alarmBusinessIcon alarmIcon0"></div>
+                    <div class="iconData">高级告警:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon alarmBusinessIcon alarmIcon1"></div>
+                    <div class="iconData">中级告警:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon alarmBusinessIcon alarmIcon2"></div>
+                    <div class="iconData">低级告警:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class=" icon alarmBusinessIcon alarmIcon3"></div>
+                    <div class="iconData">全部告警:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <!--告警等级分布-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;告警等级分布</div>
+                <div class="echart-height" id="grade_distribution">
+
+                </div>
+            </div>
+        </div>
+        <!--告警时间分布-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;告警时间分布</div>
+                <div class="echart-height" id="time_distribution">
+
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class=" block-style">
+                <div>
+                    <div class="layui-btn-group toolbarAll">
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="date">
+                        </div>
+                        <button class="layui-btn layui-btn-sm" data-type="ignoreAll">忽略全部</button>
+                    </div>
+                    <div class="searchTableCon" style="float:right">
+                        <div class="layui-inline">
+                            <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                        </div>
+                        <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                    </div>
+                </div>
+                <table class="layui-table" id="table" lay-data="{url:'../../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+                        <th lay-data="{field:'id'}">ID</th>
+                        <th lay-data="{field:'name'}">策略名称</th>
+                        <th lay-data="{field:'grade'}">告警等级</th>
+                        <th lay-data="{field:'user'}">用户名</th>
+                        <th lay-data="{field:'ip'}">源IP</th>
+                        <th lay-data="{field:'ip'}">目的IP</th>
+                        <th lay-data="{field:'url'}">URL</th>
+                        <th lay-data="{field:'sessionid'}">SESSIONID</th>
+                        <th lay-data="{field:'time'}">开始时间</th>
+                        <th lay-data="{field:'time'}">结束时间</th>
+                        <th lay-data="{field:'response'}">备注</th>
+                        <th lay-data="{fixed: 'right', width:178, align:'center',toolbar:'#operation'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">策略名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input no-edit" value="策略名称" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">策略等级</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="grade" value="高" title="高" checked="">
+                            <input type="radio" name="grade" value="中" title="中">
+                            <input type="radio" name="grade" value="低" title="低">
+                            <input type="radio" name="grade" value="忽略" title="忽略">
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn detail layui-btn-xs" lay-event="detail">详情</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit" data-toggle="modal" data-target="#myModal">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/layui/layui.all.js"></script>
+<script src="../../js/echarts.min.js"></script>
+<script src="../../js/dark.js"></script>
+<script src="../../js/js/common.js"></script>
+<script src="../../js/js/alarm-common.js"></script>
+<script>
+    $(function(){
+        /*echarts图*/
+        var ecColor = ['#38404d','#0092ff','#fff'];
+        var gradeDistribution = echarts.init(document.getElementById('grade_distribution'), 'dark');
+        var timeDistribution = echarts.init(document.getElementById('time_distribution'), 'dark');
+        /*window.onresize = myChartIp.resize;
+        window.onresize = myChartRecord.resize;*/
+        $(window).resize(function(){
+            gradeDistribution.resize();
+            timeDistribution.resize();
+        })
+        gradeDistributionOption = {
+            backgroundColor:'rgba(0,0,0,0)',
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                top:'6%',
+                left: '0%',
+                right: '0%',
+                bottom: '4%',
+                containLabel: true
+            },
+            xAxis: {
+                type : 'category',
+                data : ['周一','周二','周三','周四','周五','周六','周日'],
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+            },
+            yAxis: {
+                type: 'value',
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true,  textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}}
+            },
+            color:['#d34458','#f1964d','#60d0dc'],
+            series: [
+                {
+                    name:'邮件营销',
+                    type:'bar',
+                    stack: '告警',
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'联盟广告',
+                    type:'bar',
+                    stack: '告警',
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name:'视频广告',
+                    type:'bar',
+                    stack: '告警',
+                    data:[150, 232, 201, 154, 190, 330, 410]
+                }
+            ]
+        };
+        timeDistributionOption = {
+            backgroundColor:'rgba(0,0,0,0)',
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                top:'6%',
+                left: '0%',
+                right: '0%',
+                bottom: '4%',
+                containLabel: true
+            },
+            xAxis: {
+                type : 'category',
+                boundaryGap: false,
+                data : ['周一','周二','周三','周四','周五','周六','周日'],
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+            },
+            yAxis: {
+                type: 'value',
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true,  textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}}
+            },
+            color:['#15abce','#f1964d','#60d0dc'],
+            series: [
+                {
+                    name: '邮件营销',
+                    type: 'line',
+                    data: [120, 132, 101, 134, 90, 230, 210],
+                    lineStyle:{
+                        width:10,
+                    }
+
+                }
+            ]
+        };
+        gradeDistribution.setOption(gradeDistributionOption);
+        timeDistribution.setOption(timeDistributionOption);
+    })
+</script>
+</body>
+</html>

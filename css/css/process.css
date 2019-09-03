@@ -1,0 +1,152 @@
+/*流程图样式*/
+/**********容器**************/
+.processCon {
+    /*height: 260px;
+    width: 100%;*/
+    position: relative;
+}
+/**********左右按钮*************/
+.moveBtn {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top:50%;
+    margin-top: -20px;
+    border:2px solid #eee;
+    color:#eee;
+    border-radius: 20px;
+}
+
+
+
+.moveBtnClick {
+    cursor: pointer;
+}
+.moveBtnClick:hover {
+    color:#108cee;
+    border:2px solid #108cee;
+}
+
+
+.moveBtnDisClick {
+    cursor: not-allowed;
+}
+.nextBtn {
+    right: 0%;
+}
+.moveBtn i {
+    line-height: 38px;
+    font-size: 30px;
+}
+.nextBtn i {
+    margin-left: 5px;
+}
+.processTitle {
+    margin: 0 auto;
+    font-size: 24px;
+    text-align: center;
+    line-height: 60px;
+    color:#444444 ;
+}
+/*展示区域*/
+.eleCon {
+    position: relative;
+    margin-top:10px;
+    margin-left: 10%;
+    width: 80%;
+    height: 120px;
+    overflow: hidden;
+}
+/*荧幕*/
+.dataLoading {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+.errorNotice {
+    text-align: center;
+    line-height: 120px;
+}
+.dataLoading i {
+    font-size: 30px;
+}
+.canvas {
+    position:absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+}
+
+.processUl {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.bgLineL {
+    position: absolute;
+    left: 0;
+    top:50%;
+    margin-top: -1px;
+    border-bottom: 2px solid #108cee;
+}
+.step {
+    position: relative;
+    float: left;
+    width: 180px;
+    height: 100%;
+    cursor: pointer;
+}
+.nameP {
+    position: absolute;
+    top:30px;
+    width: 100%;
+    text-align: center;
+}
+.explainLabel {
+    position: absolute;
+    top: 60%;
+    margin-left: 10px;
+    padding: 4px;
+    width: 160px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    background-color: rgba(0,0,0,.6);
+}
+.bgLineS {
+    position: absolute;
+    left: 0;
+    top:50%;
+    width: 100%;
+    margin-top: -1px;
+    border-bottom: 2px dotted #eee;
+}
+.round {
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 10px;
+    border:1px solid #eee;
+    background-color: #fff;
+    moz-transition: all 1s ease 0s;
+    -webkit-transition: all 1s ease 0s;
+    -o-transition: all 1s ease 0s;
+    transition: all 1s ease 0s;
+}
+/*.round:hover {
+    transform: scale(1.1,1.1);
+}*/
+.colorBlue {
+    border-color:#108cee;
+    color:#108cee;
+}
+.colorText {
+    color:#000;
+}

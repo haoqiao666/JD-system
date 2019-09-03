@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    height: 100%;
+    color: #bbbcbd;
+    background-color: #f3f7f9;
+    font-size:14px;
+    overflow-x: hidden;
+    font-family: 'Source Han Sans TC Light';
+}
+ol,ul,li {
+    list-style: none;
+}
+a, a:hover , a:focus {
+    color: #bbbcbd;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+    text-decoration: none;
+}
+/*iframe中公用样式*/
+.layui-fluid {
+    padding-bottom:15px;
+}
+
+.page-title {
+    font-size: 14px;
+    padding-top: 15px;
+    color: #5c5c5c;
+}
+.block-style {
+    margin-top: 15px;
+    padding: 15px 15px;
+    border:1px solid #969ea6;
+    background-color: #fff;
+    overflow: hidden;
+}
+.block-title {
+    height: 20px;
+    font-size: 14px;
+    color: #3e3e3e;
+}
+.block-title span {
+    float: left;
+    display: inline-block;
+    height: 100%;
+    width: 2px;
+    background-color: #0089f0;
+}
+.echart-height {
+    height: 260px;
+}
+.echart-height-special {
+    height: 280px;
+    border:1px solid red;
+}
+.up-brother {
+    margin-top: 15px;
+}
+/*表格中样式覆盖*/
+.btn-info {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 12px;
+    color: #fff;
+    border-radius: 0;
+    background-color: #108cee;
+    border-color: #108cee;
+}
+.form-control {
+    margin-top: 4px;
+    height: 30px;
+    padding: 6px 12px;
+    border-radius: 0;
+}
+.btn-default {
+    margin-top: 4px;
+    padding: 4px 10px;
+    background-color: #f5fbff;
+    border-color: #f5fbff;
+    border-radius: 0px;
+    color: #108cee;
+}
+.bootstrap-table .table {
+    border-bottom: none;
+    border-radius: 0px;
+}
+thead>tr {
+    background-color: #f6f7fb;
+}
+.bootstrap-table .table > thead > tr > th {
+    border-bottom:none;
+    color: #444444;
+    font-size: 14px;
+    font-weight: normal;
+}
+.fixed-table-container thead th ,
+.fixed-table-container tbody td{
+     border-left: none;
+}
+.fixed-table-footer {
+    border-top: none;
+}
+tbody>tr:hover {
+    background-color: #f5fbff;
+}
+.table>tbody>tr>td {
+    color: #444444;
+    font-size: 12px;
+    font-weight: normal;
+    border-top: none;
+}
+.operation {
+    cursor: pointer;
+    color: #108cee;
+}
+.pagination>li:first-child>a, .pagination>li:first-child>span,
+.pagination>li:last-child>a, .pagination>li:last-child>span{
+    border-radius: 0px;
+}
+.pagination>li>a,
+.pagination>li>span {
+    color: #31b0d5;
+    background-color: #f5fbff;
+    border-color: #f5fbff;
+}
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    color: #fff;
+    background-color: #108cee;
+    border-color: #108cee;
+}
+.fixed-table-pagination .pagination a {
+    padding: 3px 12px;
+}
+.pagination-detail {
+    font-size: 14px;
+    color: #444444;
+}
+.fixed-table-toolbar .btn-group > .btn-group:last-child > .btn {
+    margin-left: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+/*表格中特殊字段样式*/
+.tableRule {
+    width:150px;
+    padding: 4px 4px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tableRemark,
+.tableUrl {
+    position: relative;
+    width: 200px;
+    padding: 4px 4px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.operationCon {
+    width: 100px;
+}
+
+/*表格字段浮框*/
+.tableField {
+    position: absolute;
+    padding: 4px 6px;
+    background-color: #000;
+    color: #fff;
+}

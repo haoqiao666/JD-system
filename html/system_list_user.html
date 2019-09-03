@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">系统管理/用户管理/用户列表</div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-sm12 block-style">
+            <div>
+                <div class="layui-btn-group toolbarAll">
+                    <button class="layui-btn layui-btn-sm" data-toggle="modal" data-target="#myModalAdd">添加用户</button>
+                </div>
+                <div class="searchTableCon" style="float:right">
+                    <div class="layui-inline">
+                        <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                    </div>
+                    <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                </div>
+            </div>
+            <table class="layui-table" id="table" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'id', fixed: 'left'}">ID</th>
+                    <th lay-data="{field:'name'}">用户名</th>
+                    <th lay-data="{field:'role'}">拥有角色</th>
+                    <th lay-data="{field:'tel'}">电话</th>
+                    <th lay-data="{field:'email'}">邮箱</th>
+                    <th lay-data="{field:'state'}">导出状态</th>
+                    <th lay-data="{field:'time'}">最后登录时间</th>
+                    <th lay-data="{field:'time'}">创建时间</th>
+                    <th lay-data="{field:'response'}">备注</th>
+                    <th lay-data="{fixed: 'right', width:178, align:'center',toolbar:'#operation'}">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<!--添加模态框-->
+<div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAdd" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabelAdd">添加/编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入用户名">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密&nbsp;&nbsp;码</label>
+                        <div class="layui-input-block">
+                            <input type="password" lay-verify="required"  autocomplete="off" class="layui-input " placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" lay-verify="required"  autocomplete="off" class="layui-input " placeholder="请确认密码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮&nbsp;&nbsp;箱</label>
+                        <div class="layui-input-block">
+                            <input type="email" lay-verify="required"  autocomplete="off" class="layui-input " placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">订&nbsp;&nbsp;阅</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手&nbsp;&nbsp;机</label>
+                        <div class="layui-input-block">
+                            <input type="tel" lay-verify="required"  autocomplete="off" class="layui-input " placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">订&nbsp;&nbsp;阅</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--添加角色模态框-->
+<div class="modal fade" id="myModalAddRole" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAddRole" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabelAddRole">添加角色</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色名</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="like[write]" title="写作">
+                            <input type="checkbox" name="like[read]" title="阅读" checked="">
+                            <input type="checkbox" name="like[game]" title="游戏">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--编辑模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加/编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入用户名">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮&nbsp;&nbsp;箱</label>
+                        <div class="layui-input-block">
+                            <input type="email" lay-verify="required"  autocomplete="off" class="layui-input " placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">订&nbsp;&nbsp;阅</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手&nbsp;&nbsp;机</label>
+                        <div class="layui-input-block">
+                            <input type="tel" lay-verify="required"  autocomplete="off" class="layui-input " placeholder="请输入邮箱">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">订&nbsp;&nbsp;阅</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="disable">禁用</a>
+        <a class="layui-btn layui-btn-xs" data-toggle="modal" data-target="#myModalAddRole">添加角色</a>
+        <a class="layui-btn layui-btn-xs" data-toggle="modal" data-target="#myModal">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+        /*表格*/
+        $('#table').bootstrapTable({
+            method: 'get',
+            url: '../package.json',
+            sidePagination: "client",
+            columns: [{
+                field:'id',
+                title: '序号',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'jdUsername',
+                title: '用户名',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'roleNames',
+                title: '拥有角色',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'jdPhone',
+                title: '电话',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'jdEmail',
+                title: '邮箱',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'status',
+                title: '导出状态',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'lastLoginTime',
+                title: '最后登录时间',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'createTime',
+                title: '创建时间',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'remark',
+                title: '备注',
+                align: 'left',
+                valign: 'middle',
+                formatter: remarkFormatter
+            }, {
+                title: '操作',
+                align: 'left',
+                valign: 'middle',
+                formatter: operationFormatter
+            }],
+        });
+        function operationFormatter(value, row, index) {
+            return [
+                '<div class="operationCon" data-table-id="table" data-row-id="'+row.id+'" data-type="auto"><span class="operation jinyong" data-method="jinyong">禁用</span>&nbsp;&nbsp;<span class="operation addrole" data-toggle="modal" data-target="#myModalAddRole">添加角色</span>&nbsp;&nbsp;<span class="operation edit" data-toggle="modal" data-target="#myModal">编辑</span>&nbsp;&nbsp;<span class="operation delete" data-method="delete">删除</span></div>'
+            ]
+        }
+    })
+</script>
+</body>
+</html>

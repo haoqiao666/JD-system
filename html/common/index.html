@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="../../images/favicon.png">
+    <title>业务安全监测</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="../../css/jeuic.css">
+    <link rel="stylesheet" href="../../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/css/common.css">
+    <link rel="stylesheet" href="../../css/css/popup.css">
+    <link rel="stylesheet" href="../../css/css/index.css">
+</head>
+<body>
+<!--头部-->
+<nav class="navbar navbar-inverse navbar-fixed-top border-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="overview.html" target="_blank"><img src="../../images/logo.png" alt="业务安全监测系统" title="业务安全监测系统" class="logo"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav" style="margin-left:65px">
+                <li>
+                    <a title='侧边伸缩'>
+                        <i class="layui-icon layui-icon-shrink-right  icon1"></i>
+                    </a>
+                </li>
+                <li>
+                    <a title='刷新'>
+                        <i class="layui-icon layui-icon-refresh-3 icon2"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle user" data-toggle="dropdown"  href="#">
+                        <i class="glyphicon glyphicon-user"></i> admin
+                        <span class="caret logo-caret"></span>
+                    </a>
+                    <ul class="dropdown-menu layui-anim layui-anim-upbit" >
+                        <li data-toggle="modal" data-target="#myModal">
+                            <a href="#"><i class="glyphicon glyphicon-lock"></i> 修改密码</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href=""><i class="glyphicon glyphicon-log-out"></i> 注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--侧栏-->
+<div class="menu" id="menu_trees">
+    <form class="layui-form" style="margin-top: 15px;">
+        <div class="layui-form-item">
+            <div class="layui-input-block system-choice" style="margin: 0 15px;color: #bbbcbd;">
+                <select name="" id="">
+                    <option value="0">所有系统</option>
+                    <option value="1">工商系统</option>
+                    <option value="2">其他系统</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+<main class="main">
+    <iframe src="../business_process_learning.html" class="main-iframe"></iframe>
+</main>
+<!--模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">登陆账号</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input no-edit" value="当前账号" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">当前密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" lay-verify="required" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">新密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" lay-verify="required" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" lay-verify="required" name="password" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!--模态框-->
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery.scrollbar.min.js"></script>
+<script src="../../js/jeTreeC.js"></script>
+<script src="../../js/layui/layui.all.js"></script>
+<script src="../../js/js/common.js"></script>
+<script>
+    /*cpu内存告警弹框*/
+   /* var cpuOutput = 60;
+    if(cpuOutput > 50){
+        layer.open({
+            type:1,
+            offset:'rb',
+            title: 'CPU告警',
+            content:'<div style="padding:15px;font-size: 14px"><i class="glyphicon glyphicon-info-sign" style="color:#FFB800"></i>&nbsp;&nbsp;确定要刷新此接口？</div>',
+            btn:['关闭'],
+            btnAlign:'c',
+            shade:0,
+            yes:function(){
+                layer.closeAll();
+            }
+        })
+    }*/
+    /*树结构json串*/
+    $(function(){
+        var jsonList = [
+           /* {
+                tid:'M01',
+                level:'1',
+                name:'总览视图',
+                link:'',
+                icon:'',
+            },*/
+            {
+                tid:'M02',
+                level:'1',
+                name:'业务透视',
+                icon:'',
+                childlist: [
+                    {
+                        tid:'M021',
+                        level:'2',
+                        name:'流程学习',
+                        link:'../business_process_learning.html'
+                    },{
+                        tid:'M022',
+                        level:'2',
+                        name:'账号学习',
+                        link:'../business_account_learning.html'
+                    },{
+                        tid:'M023',
+                        level:'2',
+                        name:'监测总览',
+                        link:'../business_monitoring_overview.html'
+                    },{
+                        tid:'M024',
+                        level:'2',
+                        name:'业务监测',
+                        link:'../business_business_detection.html'
+                    },{
+                        tid:'M025',
+                        level:'2',
+                        name:'业务配置',
+                        link:'../business_business_configuration.html'
+                    }
+                ],
+            },{
+                tid:'M03',
+                level:'1',
+                name:'资产透视',
+                icon:'',
+                childlist:[
+                    {
+                        tid:'M031',
+                        level:'2',
+                        name:'资产展示',
+                        link:'../asset_display.html'
+                    },{
+                        tid:'M032',
+                        level:'2',
+                        name:'资产配置',
+                        link:'../asset_allocation.html'
+                    },
+                ]
+            },{
+                tid:'M04',
+                level:'1',
+                name:'告警管理',
+                icon:'',
+                childlist:[
+                    {
+                        tid:'M041',
+                        level:'2',
+                        name:'告警统计',
+                        link:'../alarm_statistics.html'
+                    },{
+                        tid:'M042',
+                        level:'2',
+                        name:'告警处理',
+                        childlist:[
+                            {
+                               tid:'M0421',
+                                level:'3',
+                                name:'业务安全告警',
+                                link:'../alarm/alarm_business_account_excess.html'
+                            },{
+                                tid:'M0422',
+                                level:'3',
+                                name:'WEB安全告警',
+                                link:'../alarm/alarm_web_attack.html'
+                            },{
+                                tid:'M0423',
+                                level:'3',
+                                name:'违规账号画像',
+                                link:'../alarm/alarm_illegal_account_portrait.html'
+                            },{
+                                tid:'M0424',
+                                level:'3',
+                                name:'事件告警画像',
+                                link:'../alarm/alarm_event_warning_picture.html'
+                            },
+                        ]
+                    },{
+                        tid:'M043',
+                        level:'2',
+                        name:'告警通知',
+                        childlist:[
+                            {
+                                tid:'M0431',
+                                level:'3',
+                                name:'联系人设置',
+                                link:'../alarm/alarm_contact_setting.html'
+                            },{
+                                tid:'M0432',
+                                level:'3',
+                                name:'通知设置',
+                                link:'../alarm/alarm_notification_setting.html'
+                            },
+
+                        ]
+                    },
+                ]
+            },{
+                tid:'M05',
+                level:'1',
+                name:'策略管理',
+                icon:'',
+                childlist:[
+                    {
+                        tid:'M051',
+                        level:'2',
+                        name:'业务安全策略',
+                        link:'../strategy/strategy_account_extraction.html'
+                    },
+                    {
+                        tid:'M052',
+                        level:'2',
+                        name:'WEB安全策略',
+                        link:'../strategy/strategy_web_sql_injection.html'
+                    },{
+                        tid:'M053',
+                        level:'2',
+                        name:'业务审计策略',
+                        childlist:[
+                            {
+                                tid:'M0531',
+                                level:'3',
+                                name:'业务URL',
+                                link:'../strategy/strategy_business_url.html'
+                            },{
+                                tid:'M0532',
+                                level:'3',
+                                name:'源IP归属地',
+                                link:'../strategy/strategy_source_ip_home.html'
+                            }
+
+                        ]
+                    }
+                ]
+            },{
+                tid:'M06',
+                level:'1',
+                name:'监测日志',
+                icon:'',
+                childlist:[
+                    {
+                        tid:'M061',
+                        level:'2',
+                        name:'综合日志',
+                        link:'../journal_comprehensive.html'
+                    },{
+                        tid:'M062',
+                        level:'2',
+                        name:'敏感日志',
+                        link:'../journal_sensitive.html'
+                    },
+                ]
+            },{
+                tid:'M07',
+                level:'1',
+                name:'综合报表',
+                link:'../comprehensive_report.html',
+                icon:''
+            },{
+                tid:'M08',
+                level:'1',
+                name:'系统管理',
+                icon:'',
+                childlist:[
+                    {
+                        tid:'M081',
+                        level:'2',
+                        name:'用户管理',
+                        childlist:[
+                            {
+                                tid:'M0811',
+                                level:'3',
+                                name:'用户列表',
+                                link:'../system_list_user.html'
+
+                    },{
+                                tid:'M0812',
+                                level:'3',
+                                name:'角色列表',
+                                link:'../system_list_role.html'
+                            }
+                        ]
+                    },{
+                        tid:'M082',
+                        level:'2',
+                        name:'通知配置',
+                        childlist:[
+                            {
+                                tid:'M0821',
+                                level:'3',
+                                name:'邮件客户端配置',
+                                link:'../system_notice_mail_customer.html'
+                            },{
+                                tid:'M0822',
+                                level:'3',
+                                name:'邮件服务端配置',
+                                link:'../system_notice_mail_service.html'
+                            },
+                        ]
+                    },{
+                        tid:'M083',
+                        level:'2',
+                        name:'设备管理',
+                        childlist:[
+                            {
+                                tid:'M0831',
+                                level:'3',
+                                name:'设备信息',
+                                link:'../system_equipment_message.html'
+                            },{
+                                tid:'M0832',
+                                level:'3',
+                                name:'CPU/内存',
+                                link:'../system_equipment_cpu_memory.html'
+                            },{
+                                tid:'M0833',
+                                level:'3',
+                                name:'硬盘资源',
+                                link:'../system_equipment_hardpan.html'
+                            },{
+                                tid:'M0834',
+                                level:'3',
+                                name:'本机设置',
+                                link:'../system_equipment_local.html'
+                            },
+                        ]
+                    },{
+                        tid:'M084',
+                        level:'2',
+                        name:'网络管理',
+                        childlist:[
+                            {
+                                tid:'M0841',
+                                level:'3',
+                                name:'网略配置',
+                                link:'../system_network_configure.html'
+                            },{
+                                tid:'M0842',
+                                level:'3',
+                                name:'以太网口',
+                                link:'../system_network_ethernet.html'
+                            },{
+                                tid:'M0843',
+                                level:'3',
+                                name:'路由配置',
+                                link:'../system_network_route.html'
+                            },
+                        ]
+                    }
+                   /* ,{
+                        tid:'M085',
+                        level:'2',
+                        name:'业务配置',
+                        link:'../system_business.html'
+                    }*/
+                    ,{
+                        tid:'M086',
+                        level:'2',
+                        name:'系统日志',
+                        childlist:[
+                            {
+                                tid:'M0861',
+                                level:'3',
+                                name:'系统日志',
+                                link:'../system_journal_system.html'
+                            },{
+                                tid:'M0862',
+                                level:'3',
+                                name:'操作日志',
+                                link:'../system_journal_operation.html '
+                            },
+                        ]
+                    },
+                ]
+            },
+        ]
+        $("#menu_trees").jeTree({
+            datas: jsonList,
+            itemfun: function (item) {
+                if (item.childlist == "" || item.childlist == undefined) {  //无子节点
+                    var link = item.link;
+                    $('.main iframe').attr("src", link);
+                }
+            }
+        });
+        //一级标题icon循环
+        for (var i = 0; i < $('.nav-icon[level="1"]').length; i++) {
+            $('.nav-icon[level="1"]').eq(i).css({'background-position-y': (-i * 44 + 2) + 'px'});
+        }
+
+        //默认第一个标题样式
+        $('.nav-item:first .nav-ul').css({
+            "display": 'block',
+        }).find('.nav-item[treeid="M021"] a').css({
+            "background-color": 'rgba(0,0,0,.6)',
+            'color': '#00a7ff',
+            'border-right': '4px solid #00a7ff'
+        });
+
+        //标题点击
+        $('.nav-item a').click(function () {
+            $('.nav-item a').css({'background-color': '#19233c', 'color': '#bbbcbd', 'border-right': 'none'});
+            $('.nav-icon[level="1"]').css({'background-position-x': '4px'});
+            $(this).find('.nav-icon[level="1"]').css({'background-position-x': '-22px'});
+            $(this).css({
+                "background-color": 'rgba(0,0,0,.6)',
+                'color': '#00a7ff',
+                'border-right': '4px solid #00a7ff'
+            });
+        });
+
+        /*左侧变小点击*/
+        $('.icon1').click(function(){
+           if( $('.menu').hasClass('menu-mini')){
+               $('.menu').removeClass('menu-mini');
+               $(this).removeClass('layui-icon-spread-left');
+               $('.main').css({'margin-left':'185px'});
+           }else{
+               $('.menu').addClass('menu-mini');
+               $(this).addClass('layui-icon-spread-left');
+               $('.main').css({'margin-left':'0px'});
+           }
+        })
+        /* 刷新按钮 */
+        $('.icon2').click(function () {
+            var refreshLink = $('.main iframe').attr("src");
+            $('.main iframe').attr("src", refreshLink);
+        });
+
+    })
+</script>
+<script>
+    /*树结构滚动条*/
+   $(function(){
+       $(window).load(function(){
+           $(".je-tree").mCustomScrollbar({
+               theme:"minimal"
+           });
+       });
+   })
+</script>
+</body>
+</html>

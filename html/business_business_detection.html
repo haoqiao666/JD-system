@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/special.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">业务透视/业务监测</div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="layui-col-sm12">
+            <div class="layui-inline">
+                <label class="layui-form-label specialLabel">日期</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input specialInputTime" id="test1" value="2018-05-18">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="block-title"><span></span>&nbsp;&nbsp;IP流量分析</div>
+        <div class="layui-col-sm12 echart-height" id="log_curve">
+        </div>
+    </div>
+    <div class="layui-row layui-col-space15" id="top100_module">
+        <div class="loading">正在加载数据.....</div>
+    </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery.scrollbar.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/dark.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+        /*日志曲线图*/
+        var base = +new Date(1968, 9, 3);
+        var oneDay = 24 * 3600 * 1000;
+        var date = [];
+        var data = [Math.random() * 300];
+        for (var i = 1; i < 20000; i++) {
+            var now = new Date(base += oneDay);
+            date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+            data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+        }
+        var ecColor = ['#38404d','#0092ff'];
+        var myChartLog = echarts.init(document.getElementById('log_curve'), 'dark');
+        window.onresize = myChartLog.resize;
+        logChartsOption = {
+            backgroundColor: 'rgba(0,0,0,0)',
+            title: {
+                text: '日志曲线图',
+                textStyle: {
+                    color: ecColor[1],
+                    fontSize: 14
+                }
+            },
+            grid: {
+                top: '14%',
+                left: '2%',
+                right: '2%',
+                bottom: '2%',
+                containLabel: true
+            },
+            tooltip: {
+                trigger: 'axis',
+                textStyle: {
+                    color:ecColor[0],
+                    fontSize:'14'
+                }
+            },
+            legend: {
+                data: ['实时日志'],
+                textStyle: {
+                    color: ecColor[0]
+                }
+            },
+            toolbox: {
+                show: true,
+                right: '4%',
+                iconStyle: {
+                    normal: {
+                        borderColor: ecColor[0]
+                    }
+                },
+                feature: {
+                    mark: {show: true},
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    magicType: {show: true, type: ['line', 'bar']},
+                    restore: {show: true},
+                    saveAsImage: {show: true}
+                }
+            },
+            /*   calculable: false, */
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                data: date
+            }],
+            yAxis: {
+                type: 'value',
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                splitLine: {show: true, lineStyle: {type: 'dashed', color: ecColor[0]}},
+                axisLabel: {show: true, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                minInterval: 1
+            },
+            series: [
+                {
+                    name: '实时日志',
+                    type: 'line',
+                    smooth: true,
+                    itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                    areaStyle: {
+                        normal: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                offset: 0,
+                                color: 'rgb(255, 158, 68)'
+                            }, {
+                                offset: 1,
+                                color: 'rgb(255, 70, 131)'
+                            }])
+                        }
+                    },
+                    data: data
+                }
+            ]
+        };
+        myChartLog.setOption(logChartsOption);
+    })
+</script>
+<script>
+  /*Top100模块*/
+  $(function(){
+      $.ajax({
+          type:'GET',
+          url:'../top100.json',
+          success:function(result){
+              var resultData = result.data;
+              console.log(result);
+              if(resultData != undefined){
+                  var content = "";
+                  for(var i=0,dataLength=resultData.length;i<dataLength;i++){
+                      var label = resultData[i].label;
+                      var url = resultData[i].url;
+                      content += "<div class='layui-col-sm12 layui-col-md6'>" +
+                                      "<div class='block-style'>" +
+                                          "<div class='block-title'><span></span>&nbsp;&nbsp;"+label+"-分析100</div>" +
+                                          "<div class='abstract'>地址:&nbsp;&nbsp;"+url+"</div>" +
+                                          "<div class='simulationTable'>" +
+                                              "<ul class='ul-thead'>" +
+                                                  "<li>" +
+                                                      "<span class='wid_id'>ID</span>" +
+                                                      "<span class='wid_ip2'>访问源IP</span>" +
+                                                      "<span class='wid_place2'>归属地</span>" +
+                                                      "<span class='wid_consume_flow'>消耗流量</span>" +
+                                                      "<span class='wid_num'>访问次数</span>" +
+                                                      "<span class='wid_pre'>次数占比</span>" +
+                                                      "<span class='wid_more'>" +
+                                                         "<i class='click-more glyphicon glyphicon-triangle-left' title='查看更多'></i>" +
+                                                      "</span>" +
+                                                  "</li>" +
+                                              "</ul>" +
+                                              "<div class='tbody-scroll'>" +
+                                                 "<ul class='ul-tbody'>";
+                                                   /*以下拼接*/
+
+                      var topData = resultData[i].top100;
+                      if(topData.length > 0){   //有数据
+                          for(var b=0;b<topData.length;b++){
+                              if(b <= 9 && b >= 0){   // 1-10条数据
+                                  content += "<li>" +
+                                                  "<span class='wid_id'>"+(b+1)+"</span>" +
+                                                  "<span class='wid_ip2'>"+topData[b].srcIp+"</span>" +
+                                                  "<span class='wid_place2'>"+topData[b].place+"</span>" +
+                                                  "<span class='wid_consume_flow'>"+topData[b].flowCount+"</span>" +
+                                                  "<span class='wid_num'>"+topData[b].count+"</span>" +
+                                                  "<span class='wid_pre'>"+topData[b].percent+"</span>" +
+                                                  "<span class='wid_more'>" +
+                                                        "<label class='td_pre' style='width:"+topData[b].percent+"'></label>" +
+                                                  "</span>" +
+                                             "</li>"
+                              }else if(b > 9){
+                                  content += "<li class='tr_hide'>" +
+                                                  "<span class='wid_id'>"+(b+1)+"</span>" +
+                                                  "<span class='wid_ip2'>"+topData[b].srcIp+"</span>" +
+                                                  "<span class='wid_place2'>"+topData[b].place+"</span>" +
+                                                  "<span class='wid_consume_flow'>"+topData[b].flowCount+"</span>" +
+                                                  "<span class='wid_num'>"+topData[b].count+"</span>" +
+                                                  "<span class='wid_pre'>"+topData[b].percent+"</span>" +
+                                                  "<span class='wid_more'>" +
+                                                       "<label class='td_pre' style='width:"+topData[b].percent+"'></label>" +
+                                                  "</span>" +
+                                              "</li>"
+                              }else{
+                                 content += "<li class='loading'>暂无数据1</li>"
+                              }
+                          }
+                      }else{
+                          content += "<li class='loading'>暂无数据2</li>";
+                      }
+                      content += "</ul></div></div></div></div>";
+                  }
+                  $("#top100_module").html(content);
+                  $('.tbody-scroll').mCustomScrollbar({
+                      theme:"minimal-dark"
+                  })
+              }else{
+                  $("#top100_module").html("<div class='loading'>暂无数据</div>");
+              }
+          },
+          error:function(){
+              $('#top100_module').html("<div class='loading'>暂无数据</div>");
+          }
+      })
+
+      $('body').on('click','.click-more',function(){
+          if (!$(this).hasClass('click-more-rotate')) {
+              $(this).addClass('click-more-rotate');
+              $(this).parents('.simulationTable').find('.tr_hide').addClass('tr_show');
+          } else {
+              $(this).removeClass('click-more-rotate');
+              $(this).parents('.simulationTable').find('.tr_hide').removeClass('tr_show');
+          }
+      })
+  })
+</script>
+</body>
+</html>

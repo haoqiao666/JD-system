@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/special.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">业务透视/监测总览</div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="layui-col-sm12">
+            <div class="layui-inline">
+                <label class="layui-form-label specialLabel">日期</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input specialInputTime" id="test1" value="111">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row  block-style">
+        <div class="block-title"><span></span>&nbsp;&nbsp;数据概况</div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2 dataCon">
+           <div class="dataNameCon">
+               <span class="dataImage"></span>
+               <p class="dataName">总访问量</p>
+               <span class="underline"></span>
+           </div>
+           <div class="dataNumberCon">
+               <p class="dataNumber">88888</p>
+           </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2 dataCon">
+            <div class="dataNameCon">
+                <span class="dataImage dataImage1"></span>
+                <p class="dataName">总访问量</p>
+                <span class="underline underline1"></span>
+            </div>
+            <div class="dataNumberCon dataNumberCon1">
+                <p class="dataNumber dataNumber1">88888</p>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2 dataCon">
+            <div class="dataNameCon">
+                <span class="dataImage dataImage2"></span>
+                <p class="dataName">总访问量</p>
+                <span class="underline underline2"></span>
+            </div>
+            <div class="dataNumberCon">
+                <p class="dataNumber dataNumber2">88888</p>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2 dataCon">
+            <div class="dataNameCon">
+                <span class="dataImage dataImage3"></span>
+                <p class="dataName">总访问量</p>
+                <span class="underline underline3"></span>
+            </div>
+            <div class="dataNumberCon">
+                <p class="dataNumber dataNumber3">88888</p>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2 dataCon">
+            <div class="dataNameCon">
+                <span class="dataImage dataImage4"></span>
+                <p class="dataName">总访问量</p>
+                <span class="underline underline4"></span>
+            </div>
+            <div class="dataNumberCon">
+                <p class="dataNumber dataNumber4">88888</p>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm4 layui-col-md2 dataCon">
+            <div class="dataNameCon">
+                <span class="dataImage dataImage5"></span>
+                <p class="dataName">总访问量</p>
+                <span class="underline underline5"></span>
+            </div>
+            <div class="dataNumberCon" style="border-right: none;">
+                <p class="dataNumber dataNumber5">88888</p>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="block-title"><span></span>&nbsp;&nbsp;IP流量分析</div>
+        <div class="layui-col-sm12 echart-height" id="log_curve">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="layui-row layui-col-space15">
+        <!--1-->
+         <div class="layui-col-sm12 layui-col-md6">
+             <div class="block-style">
+                 <div class="block-title"><span></span>&nbsp;&nbsp;源IP分析(Top100)</div>
+                 <div class="abstract">基于IP、分析IP对应地域、访问量、流量消耗 </div>
+                 <div class="simulationTable">
+                     <ul class="ul-thead">
+                         <li>
+                             <span class="wid_id">ID</span>
+                             <span class="wid_ip">访问源IP</span>
+                             <span class="wid_place">归属地</span>
+                             <span class="wid_num">访问次数</span>
+                             <span class="wid_pre">次数占比</span>
+                             <span class="wid_more">
+                                  <i class="click-more glyphicon glyphicon-triangle-left" title="查看更多"></i>
+                             </span>
+                         </li>
+                     </ul>
+                     <div class="tbody-scroll">
+                         <ul class="ul-tbody yipfx">
+                             <li class="loading">正在加载数据.....</li>
+                         </ul>
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+        <!--2-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;URL统计分析(Top100)</div>
+                <div class="abstract">来源于访问排行</div>
+                <div class="simulationTable">
+                    <ul class="ul-thead">
+                        <li>
+                            <span class="wid_id">ID</span>
+                            <span class="wid_url">URL</span>
+                            <span class="wid_num">访问次数</span>
+                            <span class="wid_pre">次数占比</span>
+                            <span class="wid_more">
+                                  <i class="click-more glyphicon glyphicon-triangle-left" title="查看更多"></i>
+                             </span>
+                        </li>
+                    </ul>
+                    <div class="tbody-scroll">
+                        <ul class="ul-tbody urltjfx">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--3-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;浏览器</div>
+                <div class="abstract">基于用户分析</div>
+                <div class="simulationTable">
+                    <ul class="ul-thead">
+                        <li>
+                            <span class="wid_id">ID</span>
+                            <span class="wid_browser">浏览器</span>
+                            <span class="wid_num">访问次数</span>
+                            <span class="wid_pre">次数占比</span>
+                            <span class="wid_more">
+                                  <i class="click-more glyphicon glyphicon-triangle-left" title="查看更多"></i>
+                             </span>
+                        </li>
+                    </ul>
+                    <div class="tbody-scroll">
+                        <ul class="ul-tbody llq">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--4-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;归属地来源统计</div>
+                <div class="abstract">归属地来源分析</div>
+                <div class="simulationTable">
+                    <ul class="ul-thead">
+                        <li>
+                            <span class="wid_id">ID</span>
+                            <span class="wid_area">归属地</span>
+                            <span class="wid_num">访问次数</span>
+                            <span class="wid_pre">次数占比</span>
+                            <span class="wid_more">
+                                  <i class="click-more glyphicon glyphicon-triangle-left" title="查看更多"></i>
+                             </span>
+                        </li>
+                    </ul>
+                    <div class="tbody-scroll">
+                        <ul class="ul-tbody gsdlytj">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--5-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;状态码分析</div>
+                <div class="abstract">HTTP状态码分析</div>
+                <div class="simulationTable">
+                    <ul class="ul-thead">
+                        <li>
+                            <span class="wid_id">ID</span>
+                            <span class="wid_response_state">响应状态</span>
+                            <span class="wid_num">访问次数</span>
+                            <span class="wid_pre">次数占比</span>
+                            <span class="wid_more">
+                                  <i class="click-more glyphicon glyphicon-triangle-left" title="查看更多"></i>
+                             </span>
+                        </li>
+                    </ul>
+                    <div class="tbody-scroll">
+                        <ul class="ul-tbody ztmfx">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--6-->
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;死链分析</div>
+                <div class="abstract">404访问排行</div>
+                <div class="simulationTable">
+                    <ul class="ul-thead">
+                        <li>
+                            <span class="wid_id">ID</span>
+                            <span class="wid_url">URL</span>
+                            <span class="wid_num">访问次数</span>
+                            <span class="wid_pre">次数占比</span>
+                            <span class="wid_more">
+                                  <i class="click-more glyphicon glyphicon-triangle-left" title="查看更多"></i>
+                             </span>
+                        </li>
+                    </ul>
+                    <div class="tbody-scroll">
+                        <ul class="ul-tbody slfx">
+                            <li class="loading">正在加载数据.....</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery.scrollbar.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/dark.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+   $(function(){
+       /*日志曲线图*/
+       var base = +new Date(1968, 9, 3);
+       var oneDay = 24 * 3600 * 1000;
+       var date = [];
+       var data = [Math.random() * 300];
+       for (var i = 1; i < 20000; i++) {
+           var now = new Date(base += oneDay);
+           date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+           data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+       }
+       var ecColor = ['#38404d','#0092ff','#fff'];
+       var myChartLog = echarts.init(document.getElementById('log_curve'), 'dark');
+       $(window).resize(function(){
+           myChartLog.resize();
+       })
+       /*window.onresize = myChartLog.resize;*/
+       logChartsOption = {
+           backgroundColor: 'rgba(0,0,0,0)',
+           title: {
+               text: '日志曲线图',
+               textStyle: {
+                   color: ecColor[1],
+                   fontSize: 14
+               }
+           },
+           grid: {
+               top: '14%',
+               left: '2%',
+               right: '3%',
+               bottom: '2%',
+               containLabel: true
+           },
+           tooltip: {
+               trigger: 'axis',
+               textStyle: {
+                   color:ecColor[2],
+                   fontSize:'14'
+               }
+           },
+           legend: {
+               data: ['实时日志'],
+               textStyle: {
+                   color: ecColor[0]
+               }
+           },
+           toolbox: {
+               show: true,
+               right: '4%',
+               iconStyle: {
+                   normal: {
+                       borderColor: ecColor[0]
+                   }
+               },
+               feature: {
+                   mark: {show: true},
+                   dataZoom: {
+                       yAxisIndex: 'none'
+                   },
+                   magicType: {show: true, type: ['line', 'bar']},
+                   restore: {show: true},
+                   saveAsImage: {show: true}
+               }
+           },
+           /*   calculable: false, */
+           xAxis: [{
+               type: 'category',
+               boundaryGap: false,
+               axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+               axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+               axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+               data: date
+           }],
+           yAxis: {
+               type: 'value',
+               axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+               axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+               splitLine: {show: true, lineStyle: {type: 'dashed', color: ecColor[0]}},
+               axisLabel: {show: true, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+               minInterval: 1
+           },
+           series: [
+               {
+                   name: '实时日志',
+                   type: 'line',
+                   smooth: true,
+                   itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                   areaStyle: {
+                       normal: {
+                           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                               offset: 0,
+                               color: 'rgb(255, 158, 68)'
+                           }, {
+                               offset: 1,
+                               color: 'rgb(255, 70, 131)'
+                           }])
+                       }
+                   },
+                   data: data
+               }
+           ]
+       };
+       myChartLog.setOption(logChartsOption);
+   })
+</script>
+<script>
+    /*6大部分数据*/
+    $(function(){
+        /*源IP分析*/
+        $.ajax({
+            type:'GET',
+            url:'../tsconfig.json',
+            success:function(result){
+                var data = result.data12;
+                var data_length = data.length;
+                var tbody_conent = '';
+                if (data_length != undefined && data_length > 0) {
+                    for (var i = 0; i < data_length; i++) {
+                        if (i <= 9) {
+                            tbody_conent += "<li>" +
+                                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                                "<span class='wid_ip'>" + data[i].srcIp + "</span>" +
+                                                "<span class='wid_place'>" + data[i].place + "</span>" +
+                                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                                "<span class='wid_more'>" +
+                                                      "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                                "</span>" +
+                                            "</li>";
+                        } else {
+                            tbody_conent += "<li class='tr_hide'>" +
+                                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                                "<span class='wid_ip'>" + data[i].srcIp + "</span>" +
+                                                "<span class='wid_place'>" + data[i].place + "</span>" +
+                                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                                "<span class='wid_more'>" +
+                                                      "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                                 "</span>" +
+                                            "</li>"
+                        }
+                    }
+                    $(".yipfx").html(tbody_conent);
+                } else {
+                    $(".yipfx").html("<li class='loading'>暂无数据</li>");
+                    $('.click-more').eq(0).css({'cursor':'not-allowed'});
+                }
+                $('.tbody-scroll').mCustomScrollbar({
+                    theme: "minimal-dark"
+                });
+            }
+        });
+        /*URL统计分析*/
+        $.ajax({
+            type:'GET',
+            url:'../tsconfig.json',
+            success:function(result){
+                var data = result.data10;
+                var data_length = data.length;
+                var tbody_conent = '';
+                if (data_length != undefined && data_length > 0) {
+                    for (var i = 0; i < data_length; i++) {
+                        if (i <= 9) {
+                            tbody_conent += "<li>" +
+                                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                                "<span class='wid_url' title='"+data[i].url+"'>" + data[i].url + "</span>" +
+                                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                                "<span class='wid_more'>" +
+                                                      "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                                "</span>" +
+                                            "</li>";
+                        } else {
+                            tbody_conent += "<li class='tr_hide'>" +
+                                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                                "<span class='wid_url' title='"+data[i].url+"'>" + data[i].url + "</span>" +
+                                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                                "<span class='wid_more'>" +
+                                                    "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                                "</span>" +
+                                            "</li>"
+                        }
+                    }
+                    $(".urltjfx").html(tbody_conent);
+                } else {
+                    $(".urltjfx").html("<li class='loading'>暂无数据</li>");
+                    $('.click-more').eq(1).css({'cursor':'not-allowed'});
+                }
+                $('.tbody-scroll').mCustomScrollbar({
+                    theme: "minimal-dark"
+                });
+            }
+        });
+        /*浏览器*/
+        $.ajax({
+            type:'GET',
+            url:'../tsconfig.json',
+            success:function(result){
+                var data = result.data0;
+                var data_length = data.length;
+                var tbody_conent = '';
+                if (data_length != undefined && data_length > 0) {
+                    for (var i = 0; i < data_length; i++) {
+                        if (i <= 9) {
+                            tbody_conent += "<li>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_url'>" + data[i].browser + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>";
+                        } else {
+                            tbody_conent += "<li class='tr_hide'>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_url'>" + data[i].browser + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>"
+                        }
+                    }
+                    $(".llq").html(tbody_conent);
+                } else {
+                    $(".llq").html("<li class='loading'>暂无数据</li>");
+                    $('.click-more').eq(2).css({'cursor':'not-allowed'}).attr('disabled',"disabled");
+                }
+                $('.tbody-scroll').mCustomScrollbar({
+                    theme: "minimal-dark"
+                });
+            }
+        });
+        /*归属地来源统计*/
+        $.ajax({
+            type:'GET',
+            url:'../tsconfig.json',
+            success:function(result){
+                var data = result.data10;
+                var data_length = data.length;
+                var tbody_conent = '';
+                if (data_length != undefined && data_length > 0) {
+                    for (var i = 0; i < data_length; i++) {
+                        if (i <= 9) {
+                            tbody_conent += "<li>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_area'>" + data[i].place + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>";
+                        } else {
+                            tbody_conent += "<li class='tr_hide'>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_area'>" + data[i].place + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>"
+                        }
+                    }
+                    $(".gsdlytj").html(tbody_conent);
+                } else {
+                    $(".gsdlytj").html("<li class='loading'>暂无数据</li>");
+                    $('.click-more').eq(3).css({'cursor':'not-allowed'}).attr('disabled',"disabled");
+                }
+                $('.tbody-scroll').mCustomScrollbar({
+                    theme: "minimal-dark"
+                });
+            }
+        });
+        /*状态码分析*/
+        $.ajax({
+            type:'GET',
+            url:'../tsconfig.json',
+            success:function(result){
+                var data = result.data10;
+                var data_length = data.length;
+                var tbody_conent = '';
+                if (data_length != undefined && data_length > 0) {
+                    for (var i = 0; i < data_length; i++) {
+                        if (i <= 9) {
+                            tbody_conent += "<li>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_response_state' title='"+ data[i].status +"'>" + data[i].status + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>";
+                        } else {
+                            tbody_conent += "<li class='tr_hide'>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_response_state' title='"+ data[i].status +"'>" + data[i].status + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>"
+                        }
+                    }
+                    $(".ztmfx").html(tbody_conent);
+                } else {
+                    $(".ztmfx").html("<li class='loading'>暂无数据</li>");
+                    $('.click-more').eq(4).css({'cursor':'not-allowed'}).attr('disabled',"disabled");
+                }
+                $('.tbody-scroll').mCustomScrollbar({
+                    theme: "minimal-dark"
+                });
+            }
+        });
+        /*死链分析*/
+        $.ajax({
+            type:'GET',
+            url:'../tsconfig.json',
+            success:function(result){
+                var data = result.data10;
+                var data_length = data.length;
+                var tbody_conent = '';
+                if (data_length != undefined && data_length > 0) {
+                    for (var i = 0; i < data_length; i++) {
+                        if (i <= 9) {
+                            tbody_conent += "<li>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_url' title='" + data[i].url + "'>" + data[i].url + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>";
+                        } else {
+                            tbody_conent += "<li class='tr_hide'>" +
+                                "<span class='wid_id'>" + (i + 1) + "</span>" +
+                                "<span class='wid_url' title='" + data[i].url + "'>" + data[i].url + "</span>" +
+                                "<span class='wid_num'>" + data[i].count + "</span>" +
+                                "<span class='wid_pre'>" + data[i].percent + "</span>" +
+                                "<span class='wid_more'>" +
+                                "<label class='td_pre' style='width:" + data[i].percent + "' title='" + data[i].percent + "'></label>" +
+                                "</span>" +
+                                "</li>"
+                        }
+                    }
+                    $(".slfx").html(tbody_conent);
+                } else {
+                    $(".slfx").html("<li class='loading'>暂无数据</li>");
+                    $('.click-more').eq(1).css({'cursor':'not-allowed'});
+                }
+                $('.tbody-scroll').mCustomScrollbar({
+                    theme: "minimal-dark"
+                });
+            }
+        });
+        /*点击查看更多*/
+        $('.click-more').each(function (i) {
+            $(this).click(function () {
+                if (!$(this).hasClass('click-more-rotate')&& $(this).attr('disabled') != 'disabled') {
+                    $(this).addClass('click-more-rotate');
+                    $('.ul-tbody').eq(i).find('.tr_hide').addClass('tr_show');
+                } else {
+                    $(this).removeClass('click-more-rotate');
+                    $('.ul-tbody').eq(i).find('.tr_hide').removeClass('tr_show');
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">系统管理/通知配置/邮件客户端配置</div>
+    </div>
+    <div class="layui-row block-style">
+        <div class="block-title"><span></span>&nbsp;&nbsp;邮件信息设置</div>
+        <form class="layui-form">
+            <div class="modal-body">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">收件人</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入业务名称">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">推送开关</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                    </div>
+                </div>
+
+            </div>
+            <div class="layui-form-item modal-footer">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+    })
+</script>
+</body>
+</html>

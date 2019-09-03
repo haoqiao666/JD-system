@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+    <link rel="stylesheet" href="../css/css/special.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">资产透视/资产展示</div>
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs4 layui-col-sm4 layui-col-md2">
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon assectIcon assectIcon0"></div>
+                    <div class="iconData">任务总数:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon assectIcon assectIcon1"></div>
+                    <div class="iconData">IP总数:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+            <div class="block-style">
+                <div class="iconDataCon">
+                    <div class="icon assectIcon assectIcon2"></div>
+                    <div class="iconData">扫描记录:&nbsp;<span>62410</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs8 layui-col-sm8 layui-col-md4">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;IP总数</div>
+                <div class="echart-height" id="ip_total"></div>
+            </div>
+        </div>
+        <div class="layui-col-sm12 layui-col-md6">
+            <div class="block-style">
+                <div class="block-title"><span></span>&nbsp;&nbsp;扫描记录总数</div>
+                <div class="echart-height" id="scanning_record"></div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row">
+        <div class=" block-style">
+            <div class="layui-col-sm12">
+                <div>
+                    <div class="layui-btn-group toolbarAll">
+                        <button class="layui-btn layui-btn-sm" data-type="openAll">批量开放</button>
+                        <button class="layui-btn layui-btn-sm" data-type="deleteAll">删除全部</button>
+                    </div>
+                    <div class="searchTableCon" style="float:right">
+                        <div class="layui-inline">
+                            <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                        </div>
+                        <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                    </div>
+                </div>
+                <table class="layui-table" id="table" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+                        <th lay-data="{field:'id'}">ID</th>
+                        <th lay-data="{field:'name'}">系统名称</th>
+                        <th lay-data="{field:'ip'}">域名</th>
+                        <th lay-data="{field:'ip'}">IP</th>
+                        <th lay-data="{field:'port'}">端口</th>
+                        <th lay-data="{field:'ip'}">口令风险</th>
+                        <th lay-data="{field:'agreement'}">协议</th>
+                        <th lay-data="{field:'service'}">服务</th>
+                        <th lay-data="{field:'ip'}">责任人</th>
+                        <th lay-data="{field:'time'}">时间</th>
+                        <th lay-data="{field:'state'}">状态</th>
+                        <th lay-data="{field:'response'}">备注</th>
+                        <th lay-data="{fixed: 'right', width:178, align:'center',toolbar:'#operation'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加/编辑</h4>
+                </div>
+                <div class="modal-body editSystem">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">系统名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" placeholder="系统名称">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">系统等级</label>
+                        <div class="layui-input-block" >
+                            <div id="starEdit" ></div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">IP/端口</label>
+                        <div class="layui-input-block ip-port">
+                            <input type="text" lay-verify="required|ip" autocomplete="off" class="layui-input" placeholder="请输入IP">
+                            <input type="text" lay-verify="required|number|port" autocomplete="off" class="layui-input" placeholder="请输入端口" style="margin-left: 1.5%">
+                            <button type="button" class="btn btn-info edit-ip-port" style="float: right"><i class="glyphicon glyphicon-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item edit-ip-port-next">
+                        <label class="layui-form-label">Cookie</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" placeholder="Cookie关键字：如：session">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否启用</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否对外</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--****************layui表格操作内容****************-->
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn layui-btn-xs" lay-event="edit" data-toggle="modal" data-target="#myModal">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/echarts.min.js"></script>
+<script src="../js/dark.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+        /*IP总数及扫描记录总数ec图*/
+        var ecColor = ['#38404d','#0092ff','#fff'];
+        var myChartIp = echarts.init(document.getElementById('ip_total'), 'dark');
+        var myChartRecord = echarts.init(document.getElementById('scanning_record'), 'dark');
+        /*window.onresize = myChartIp.resize;
+        window.onresize = myChartRecord.resize;*/
+        $(window).resize(function(){
+            myChartIp.resize();
+            myChartRecord.resize();
+        })
+        ipChartsOption = {
+            backgroundColor: 'rgba(0,0,0,0)',
+            tooltip : {
+                 trigger: 'item',
+                 formatter: "{a} <br/>{b} : {c} ({d}%)",
+                 textStyle: {
+                    color:ecColor[2],
+                    fontSize:'14'
+                 }
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    radius : '60%',
+                    center: 'center',
+                    color: ['#16a8cd','#f07355', '#37beb0', '#de3c63','#90bf63','#e89c3e','#d1ac5c','#7577c4','#4dd9d6','#c0e44c'],
+                    data:[
+                        {value:335, name:'直接访问'},
+                        {value:310, name:'邮件营销'},
+                        {value:234, name:'联盟广告'},
+                        {value:135, name:'视频广告'},
+                        {value:1548, name:'搜索引擎'}
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+        recordChartsOption = {
+            backgroundColor: 'rgba(0,0,0,0)',
+            title: {
+                text: '日志曲线图',
+                textStyle: {
+                    color: ecColor[1],
+                    fontSize: 14
+                }
+            },
+            grid: {
+                top: '14%',
+                left: '2%',
+                right: '3%',
+                bottom: '2%',
+                containLabel: true
+            },
+            tooltip: {
+                trigger: 'axis',
+                textStyle: {
+                    color:ecColor[2],
+                    fontSize:'14'
+                }
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                axisLine: {show: true, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                axisLabel: {show: true, rotate: 36, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            }],
+            yAxis: {
+                type: 'value',
+                axisLine: {show: false, lineStyle: {color: ecColor[0]}},
+                axisTick: {show: true, lineStyle: {color: ecColor[0]}},
+                splitLine: {show: true, lineStyle: {type: 'dashed', color: ecColor[0]}},
+                axisLabel: {show: true, textStyle: {fontWeight:'400',color: ecColor[0],fontSize:'12'}},
+                minInterval: 1
+            },
+            series: [
+                {
+                    name: '实时日志',
+                    type: 'line',
+                    smooth: true,
+                    itemStyle: {normal: {color:'#43c3de'}},
+                    areaStyle: {
+                        normal: {
+                            color:'rgba(67,195,222,1)'
+                        }
+                    },
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                }
+            ]
+        };
+        myChartIp.setOption(ipChartsOption);
+        myChartRecord.setOption(recordChartsOption);
+    })
+</script>
+</body>
+</html>

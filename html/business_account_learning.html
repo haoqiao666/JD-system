@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+   <!-- <link rel="stylesheet" href="../css/bootstrap-table.css">-->
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">业务透视/账号学习</div>
+    </div>
+    <div class="layui-row">
+        <div class=" block-style">
+            <div class="layui-col-sm12">
+                <div>
+                    <div class="layui-btn-group toolbarAll">
+                        <button class="layui-btn layui-btn-sm" data-toggle="modal" data-target="#myModalAdd">添加流程</button>
+                        <button class="layui-btn layui-btn-sm" data-type="deleteAll">删除全部</button>
+                    </div>
+                    <div class="searchTableCon" style="float:right">
+                        <div class="layui-inline">
+                            <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                        </div>
+                        <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                    </div>
+                </div>
+                <table class="layui-table" id="table" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+                        <th lay-data="{field:'id',fixed: true}">ID</th>
+                        <th lay-data="{field:'place'}">业务名称</th>
+                        <th lay-data="{field:'ip'}">规则</th>
+                        <th lay-data="{field:'ip'}">监测状态</th>
+                        <th lay-data="{field:'ip'}">发现时间</th>
+                        <th lay-data="{field:'response'}">备注</th>
+                        <th lay-data="{fixed: 'right', width:178, align:'center',toolbar:'#operation'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加/编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">业务名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input specialInput" placeholder="业务名称">
+                            <button class="btn btn-info" style="float: right"><i class="glyphicon glyphicon-th-list"></i></button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">规&nbsp;&nbsp;则</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">位&nbsp;&nbsp;置</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="position" value="请求正文" title="请求正文" checked="">
+                            <input type="radio" name="position" value="请求头" title="请求头">
+                            <input type="radio" name="position" value="响应正文" title="响应正文">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否启用</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--添加模态框-->
+<div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAdd" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabelAdd">添加/编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">业务名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input specialInput" placeholder="业务名称">
+                            <button class="btn btn-info" style="float: right"><i class="glyphicon glyphicon-th-list"></i></button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">规&nbsp;&nbsp;则</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">位&nbsp;&nbsp;置</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="position" value="请求正文" title="请求正文" checked="">
+                            <input type="radio" name="position" value="请求头" title="请求头">
+                            <input type="radio" name="position" value="响应正文" title="响应正文">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否启用</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn layui-btn-xs" lay-event="edit" data-toggle="modal" data-target="#myModal">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap-table.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+        $('#table').bootstrapTable({
+            method: 'get',
+            url: '../package.json',
+            sidePagination: "client",
+            columns: [{
+                field: 'state',
+                checkbox: true
+            },{
+                field:'id',
+                title: '序号',
+                align: 'left',
+                valign: 'middle',
+            }, {
+                field: 'place',
+                title: '业务名称',
+                align: 'left',
+                valign: 'middle'
+            }, {
+                field: 'ip',
+                title: '规则',
+                align: 'left',
+                valign: 'middle',
+                formatter:ruleFormatter
+            }, {
+                field: 'ip',
+                title: '监测状态',
+                align: 'left',
+                valign: 'middle',
+            }, {
+                field: 'ip',
+                title: '发现时间',
+                align: 'left',
+                valign: 'middle',
+            }, {
+                field: 'response',
+                title: '备注     ',
+                align: 'left',
+                valign: 'middle',
+                formatter: remarkFormatter
+            }, {
+                title: '操作',
+                align: 'left',
+                valign: 'middle',
+                formatter: operationFormatter
+            }],
+        });
+        function operationFormatter(value, row, index) {
+            return [
+                '<div class="operationCon" data-table-id="table" data-row-id="'+row.id+'" data-type="auto"><span class="operation edit" data-toggle="modal" data-target="#myModal">编辑</span>&nbsp;&nbsp;<span class="operation delete" data-method="delete">删除</span></div>'
+            ]
+        }
+    })
+</script>
+</body>
+</html>

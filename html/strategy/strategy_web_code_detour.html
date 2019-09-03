@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../css/css/common.css">
+    <link rel="stylesheet" href="../../css/css/popup.css">
+    <link rel="stylesheet" href="../../css/css/special.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">策略管理/WEB安全策略</div>
+    </div>
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-sm12">
+            <div class="block-style">
+                <ul class="page-nav">
+                    <li link="../strategy/strategy_web_sql_injection.html" >SQL注入</li>
+                    <li link="../strategy/strategy_web_sensitive_file.html" >敏感文件</li>
+                    <li link="../strategy/strategy_web_file_contains.html" >文件包含</li>
+                    <li link="../strategy/strategy_web_xss_cross.html" >XSS跨站</li>
+                    <li link="../strategy/strategy_web_csrf_attack.html" >CSRF攻击</li>
+                    <li link="../strategy/strategy_web_code_execution.html" >代码执行</li>
+                    <li link="../strategy/strategy_web_scanning_detection.html" >扫描探测</li>
+                    <li link="../strategy/strategy_web_message_bomb.html" >短信炸弹</li>
+                    <li link="../strategy/strategy_web_mailbox_bomb.html" >邮箱炸弹</li>
+                    <li link="../strategy/strategy_web_brute_force.html">暴力破解</li>
+                    <li link="../strategy/strategy_web_code_detour.html" style="border-bottom: 2px solid #0089f0;color: #0089f0">验证码绕行</li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class=" block-style">
+                <div class="information-description">
+                    <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;该功能是对用户登录时，是否进行验证码校验做监测。
+                </div>
+                <div>
+                    <div class="layui-btn-group toolbarAll">
+                        <button class="layui-btn layui-btn-sm" data-toggle="modal" data-target="#myModal">添加策略</button>
+                        <button class="layui-btn layui-btn-sm" data-type="deleteAll">删除全部</button>
+                    </div>
+                    <div class="searchTableCon" style="float:right">
+                        <div class="layui-inline">
+                            <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                        </div>
+                        <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                    </div>
+                </div>
+                <table class="layui-table" id="table" lay-data="{url:'../../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                    <thead>
+                    <tr>
+                        <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+                        <th lay-data="{field:'id'}">ID</th>
+                        <th lay-data="{field:'name'}">策略名称</th>
+                        <th lay-data="{field:'grade'}">策略等级</th>
+                        <th lay-data="{field:'url'}">监测URL</th>
+                        <th lay-data="{field:'code'}">验证码</th>
+                        <th lay-data="{field:'state'}">启用状态</th>
+                        <th lay-data="{field:'time'}">创建时间</th>
+                        <th lay-data="{field:'response'}">备注</th>
+                        <th lay-data="{fixed: 'right', width:178, align:'center',toolbar:'#operation'}">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--编辑模态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加/编辑</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">策略名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入策略名称">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">监测URL</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input layui-input specialInput" placeholder="请输入监测URL">
+                            <button class="btn btn-info" type="button" style="float: right"><i class="glyphicon glyphicon-th-list"></i></button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证字段名</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input"  placeholder="请输入验证字段名">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">策略等级</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="grade" value="1" title="高" checked>
+                            <input type="radio" name="grade" value="2" title="中">
+                            <input type="radio" name="grade" value="3" title="低">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否启用</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="close" lay-skin="switch" lay-text="开|关">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn layui-btn-xs" lay-event="edit" data-toggle="modal" data-target="#myModal">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../../js/jquery-1.10.2.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/layui/layui.all.js"></script>
+<script src="../../js/js/common.js"></script>
+<script>
+    $(function(){
+
+    })
+</script>
+</body>
+</html>

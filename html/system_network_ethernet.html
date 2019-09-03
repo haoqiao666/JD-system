@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">系统管理/网络管理/以太网口</div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-sm12 block-style">
+            <div style="overflow: hidden">
+                <div class="searchTableCon" style="float:right">
+                    <div class="layui-inline">
+                        <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                    </div>
+                    <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                </div>
+            </div>
+            <table class="layui-table" id="table" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'id', fixed: 'left'}">ID</th>
+                    <th lay-data="{field:'name'}">接口名称</th>
+                    <th lay-data="{field:'url'}">入端速率</th>
+                    <th lay-data="{field:'ip'}">出端速率</th>
+                    <th lay-data="{field:'state'}">双工模式</th>
+                    <th lay-data="{field:'time'}">光电模式</th>
+                    <th lay-data="{field:'time'}">启用</th>
+                    <th lay-data="{field:'time'}">外接</th>
+                    <th lay-data="{field:'response'}">备注</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+    })
+</script>
+</body>
+</html>

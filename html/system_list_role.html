@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/css/common.css">
+    <link rel="stylesheet" href="../css/css/popup.css">
+</head>
+<body>
+<div class="layui-fluid layui-anim layui-anim-upbit">
+    <div class="layui-row">
+        <div class="layui-col-sm12 page-title">系统管理/用户管理/角色列表</div>
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-sm12 block-style">
+            <div>
+                <div class="layui-btn-group toolbarAll">
+                    <button class="layui-btn layui-btn-sm" data-toggle="modal" data-target="#myModalAdd">添加角色</button>
+                </div>
+                <div class="searchTableCon" style="float:right">
+                    <div class="layui-inline">
+                        <input class="layui-input" name="id" id="searchInput" autocomplete="off" placeholder="请输入ID">
+                    </div>
+                    <button class="layui-btn layui-btn-sm" id="searchBtn" data-type="searchBtn">搜索</button>
+                </div>
+            </div>
+            <table class="layui-table" id="table" lay-data="{url:'../package1.json',page:true,id:'tableId'}" lay-filter="single">
+                <thead>
+                <tr>
+                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
+                    <th lay-data="{field:'id'}">ID</th>
+                    <th lay-data="{field:'name'}">角色名称</th>
+                    <th lay-data="{field:'url'}">角色描述</th>
+                    <th lay-data="{field:'ip'}">拥有权限</th>
+                    <th lay-data="{field:'state'}">可监测业务系统</th>
+                    <th lay-data="{fixed: 'right', width:200, align:'center',toolbar:'#operation'}">操作</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<!--添加角色模态框-->
+<div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAdd" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabelAdd">添加角色</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色名</label>
+                        <div class="layui-input-block">
+                            <input type="text" lay-verify="required" autocomplete="off" class="layui-input " placeholder="请输入角色名">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备&nbsp;&nbsp;注</label>
+                        <div class="layui-input-block">
+                            <textarea name="remark" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--添加角色模态框-->
+<div class="modal fade" id="myModalAddRole" tabindex="-1" role="dialog" aria-labelledby="myModalLabelAddRole" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabelAddRole">监测系统分配</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色名</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="like[write]" title="写作">
+                            <input type="checkbox" name="like[read]" title="阅读" checked="">
+                            <input type="checkbox" name="like[game]" title="游戏">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--角色权限分配态框-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="layui-form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">角色权限分配</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="layui-form-item modal-footer">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn lay-submit" lay-submit >确定</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <div class="operationCon" data-table-id="table"  >
+        <a class="layui-btn layui-btn-xs"  data-toggle="modal" data-target="#myModal">角色权限分配</a>
+        <a class="layui-btn layui-btn-xs"  data-toggle="modal" data-target="#myModalAddRole">监测系统分配</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
+</script>
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script src="../js/js/common.js"></script>
+<script>
+    $(function(){
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true
+  },
+  "data0": [
+
+  ],
+  "data10":[
+    {
+      "id":1,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":2,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":3,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":4,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":5,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":6,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":7,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":8,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":9,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    },{
+      "id":10,
+      "ip":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "status":"3xx 需要进行附加操作以完成请求",
+      "url":"172.16.1.65/cgi-bin/environment.cgi",
+      "percent":"50%"
+    }
+
+  ],
+  "data12":[
+    {
+      "id":0,
+      "srcIp":"10.1.1.22sfhnn",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    },{
+      "id":0,
+      "srcIp":"10.1.1.22",
+      "count":4555,
+      "place":"北京",
+      "percent":"50%"
+    }
+
+  ]
+}
